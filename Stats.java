@@ -7,9 +7,13 @@ public class Stats {
         for (int i = 0; i < scoreList.size(); i++) {
             ScoreInfo s = scoreList.get(i);
             if (s.getScore() == score) {
-                s.increment();
+                scoreList.get(i).increment();
                 return false;
             }
+        }
+        if (score < s.getScore()) {
+            scoreList.add(i, new ScoreInfo(score));
+            return true;
         }
         scoreList.add(new ScoreInfo(score));
         return true;
